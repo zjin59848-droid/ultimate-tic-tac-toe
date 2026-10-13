@@ -1,0 +1,19 @@
+# 构建产物与缓存
+__pycache__/
+build/
+dist/
+*.spec
+*.zip
+
+# 音频素材（体积大且版权敏感，不入库；README 说明了放置方法）
+assets/*.mp3
+assets/*.m4a
+assets/*.wav
+assets/*.ogg
+assets/*.flac
+assets/*.aac
+assets/bg-storm.*
+
+# 系统
+.DS_Store
+Thumbs.db

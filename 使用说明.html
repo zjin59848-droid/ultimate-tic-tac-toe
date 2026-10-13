@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>超级井字棋 · 使用说明</title>
+<style>
+  :root {
+    --ink: #21324a; --muted: #5f7492; --line: #d6e3f3;
+    --blue: #1f7ae0; --coral: #e8667f; --amber: #d98a1f; --green: #128a4f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink);
+    font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    line-height: 1.85; background: #f2f7fd;
+  }
+  .hero {
+    background: linear-gradient(180deg, #8fc7ee 0%, #c4e3f7 55%, #eef6fc 100%);
+    padding: 56px 20px 46px; text-align: center;
+  }
+  .hero h1 { margin: 0; font-size: clamp(26px, 5vw, 40px); letter-spacing: 3px; }
+  .hero h1 span { color: var(--amber); }
+  .hero p { margin: 10px 0 0; color: #33506f; font-size: 15px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 18px 70px; }
+  h2 {
+    font-size: 21px; margin: 40px 0 14px; padding-left: 12px;
+    border-left: 5px solid var(--blue); letter-spacing: 1px;
+  }
+  h3 { font-size: 16.5px; margin: 24px 0 8px; color: #2a405f; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; margin: 14px 0; box-shadow: 0 8px 24px rgba(70,110,160,.08);
+  }
+  ol.steps { padding-left: 22px; margin: 0; }
+  ol.steps li { margin: 10px 0; }
+  ol.steps b { color: var(--blue); }
+  .warn { background: #fff6e6; border-color: #f3d9a4; }
+  .warn b { color: var(--amber); }
+  .tip { background: #edf7f1; border-color: #cbe8d8; }
+  .tip b { color: var(--green); }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; background: #fff; }
+  th, td { border: 1px solid var(--line); padding: 9px 12px; text-align: left; vertical-align: top; }
+  th { background: #eef4fc; font-weight: 700; }
+  code {
+    background: #eef2f9; padding: 2px 7px; border-radius: 6px;
+    font-family: Consolas, monospace; font-size: 13.5px; color: #2a405f;
+  }
+  .fig { text-align: center; margin: 18px 0; }
+  .fig svg { max-width: 100%; height: auto; }
+  .cap { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 999px;
+         font-size: 12.5px; background: #eef4fc; border: 1px solid var(--line); margin: 2px; }
+  .x { color: var(--blue); font-weight: 700; }
+  .o { color: var(--coral); font-weight: 700; }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            padding: 12px 16px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 700; }
+  details p { margin: 8px 0 0; color: var(--muted); }
+  .stages { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+  .stage {
+    flex: 1 1 200px; border-radius: 14px; padding: 16px; color: #fff; min-height: 120px;
+  }
+  .stage1 { background: linear-gradient(160deg, #6db8ea, #a9d8f5); color: #10314c; }
+  .stage2 { background: linear-gradient(160deg, #e8a35c, #d97b6a); }
+  .stage3 { background: linear-gradient(160deg, #131a30, #2a3350);
+            border: 1px solid #ff5c5c; box-shadow: 0 0 18px rgba(255,80,80,.4); }
+  .stage b { display: block; font-size: 16px; margin-bottom: 6px; }
+  .stage small { font-size: 12.5px; opacity: .92; line-height: 1.7; display: block; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 10px; }
+  .kbd { display: inline-block; border: 1px solid #b9c8de; border-bottom-width: 3px;
+         border-radius: 7px; padding: 1px 9px; background: #fff;
+         font-family: Consolas, monospace; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>超级<span>井字棋</span></h1>
+  <p>Ultimate Tic-Tac-Toe · 局域网双人对战 · 手机可加入 · 图文使用说明</p>
+</div>
+
+<div class="wrap">
+
+<h2>一、30 秒开玩</h2>
+<div class="card">
+  <ol class="steps">
+    <li><b>双击 <code>超级井字棋.exe</code></b><br>
+        控制台会显示局域网地址和<b>二维码</b>，浏览器自动打开游戏页面。</li>
+    <li>防火墙弹窗 → 勾选<b>专用网络</b> → 点 <b>允许访问</b>
+        <span class="tag">⚠ 这步决定手机能不能连上</span></li>
+    <li>你点 <b>➕ 创建新房间</b> → 记下 <b>6 位房间码</b></li>
+    <li>朋友手机连<b>同一个 WiFi</b> → 扫控制台二维码，或输入你屏幕上的地址</li>
+    <li>输入房间码加入 → 创建者执 <span class="x">✕</span>、加入者执 <span class="o">◯</span>，开下！</li>
+  </ol>
+</div>
+<div class="card tip"><b>小提示：</b>把 <b>👥 房间</b> 面板里的链接发给朋友，点开就能<b>自动进房</b>，连房间码都不用输。退出游戏 = 关闭控制台窗口。</div>
+
+<h2>二、棋盘与规则</h2>
+
+<div class="fig">
+  <svg viewBox="0 0 560 230" width="560" role="img" aria-label="棋盘结构示意">
+    <defs>
+      <style>
+        .sb { fill:#ffffff; stroke:#c9d9ee; stroke-width:2; }
+        .sc { fill:#eaf1fa; }
+        .lbl { font: 12px "Microsoft YaHei"; fill:#5f7492; }
+        .big { font: 14px "Microsoft YaHei"; fill:#21324a; font-weight:bold; }
+      </style>
+    </defs>
+    <!-- 大棋盘 -->
+    <g transform="translate(20,20)">
+      <rect x="-8" y="-8" width="216" height="216" rx="12" fill="#f4f9ff" stroke="#d6e3f3"/>
+      <!-- 9 个小棋盘 -->
+      <g transform="translate(0,0)">
+        <rect class="sb" x="0"  y="0"  width="60" height="60" rx="6"/>
+        <rect class="sb" x="72" y="0"  width="60" height="60" rx="6"/>
+        <rect class="sb" x="144" y="0" width="60" height="60" rx="6"/>
+        <rect class="sb" x="0"  y="72" width="60" height="60" rx="6"/>
+        <rect class="sb" x="72" y="72" width="60" height="60" rx="6"/>
+        <rect class="sb" x="144" y="72" width="60" height="60" rx="6"/>
+        <rect class="sb" x="0"  y="144" width="60" height="60" rx="6"/>
+        <rect class="sb" x="72" y="144" width="60" height="60" rx="6"/>
+        <rect class="sb" x="144" y="144" width="60" height="60" rx="6"/>
+      </g>
+      <!-- 每个盘里的 9 格 -->
+      <g>
+        <g>
+          <rect class="sc" x="6" y="6" width="15" height="15" rx="3"/><rect class="sc" x="23" y="6" width="15" height="15" rx="3"/><rect class="sc" x="40" y="6" width="15" height="15" rx="3"/>
+          <rect class="sc" x="6" y="23" width="15" height="15" rx="3"/><rect class="sc" x="23" y="23" width="15" height="15" rx="3"/><rect class="sc" x="40" y="23" width="15" height="15" rx="3"/>
+          <rect class="sc" x="6" y="40" width="15" height="15" rx="3"/><rect class="sc" x="23" y="40" width="15" height="15" rx="3"/><rect class="sc" x="40" y="40" width="15" height="15" rx="3"/>
+        </g>
+      </g>
+      <text class="big" x="100" y="226" text-anchor="middle">9 × 9 = 9 个小井字棋</text>
+    </g>
+    <!-- 说明 -->
+    <g transform="translate(270,40)">
+      <text class="big" x="0" y="0">两层嵌套：</text>
+      <text class="lbl" x="0" y="26">① 每个小棋盘 3×3 共 9 格</text>
+      <text class="lbl" x="0" y="48">② 小棋盘内三连（横/竖/斜）→ 占领该盘</text>
+      <text class="lbl" x="0" y="70">③ 大棋盘上 3 个小棋盘三连 → 赢得整局</text>
+      <text class="lbl" x="0" y="102">落点规则（最关键）：</text>
+      <text class="lbl" x="0" y="124">你在小棋盘下在第几格，</text>
+      <text class="lbl" x="0" y="146">对手就必须去大棋盘对应位置的小棋盘。</text>
+      <text class="lbl" x="0" y="176">目的地已结束 → 对手可自由选择。</text>
+    </g>
+  </svg>
+  <div class="cap">图 1 · 棋盘结构与核心规则</div>
+</div>
+
+<div class="fig">
+  <svg viewBox="0 0 560 190" width="560" role="img" aria-label="落点映射示意">
+    <g transform="translate(20,20)">
+      <text class="big" x="60" y="-4" text-anchor="middle" style="font-size:13px">你下在「中央」格</text>
+      <rect x="0" y="8" width="120" height="120" rx="8" fill="#fff" stroke="#c9d9ee" stroke-width="2"/>
+      <rect x="6" y="6" width="108" height="108" fill="none"/>
+      <g fill="#eaf1fa">
+        <rect x="8" y="8" width="32" height="32" rx="4"/><rect x="44" y="8" width="32" height="32" rx="4"/><rect x="80" y="8" width="32" height="32" rx="4"/>
+        <rect x="8" y="44" width="32" height="32" rx="4"/><rect x="80" y="44" width="32" height="32" rx="4"/>
+        <rect x="8" y="80" width="32" height="32" rx="4"/><rect x="44" y="80" width="32" height="32" rx="4"/><rect x="80" y="80" width="32" height="32" rx="4"/>
+      </g>
+      <rect x="44" y="44" width="32" height="32" rx="4" fill="#d98a1f"/>
+      <text x="60" y="66" text-anchor="middle" style="font:700 16px sans-serif; fill:#fff">✕</text>
+    </g>
+    <path d="M 165 88 L 245 88" stroke="#d98a1f" stroke-width="4" fill="none"/>
+    <path d="M 238 78 L 254 88 L 238 98 Z" fill="#d98a1f"/>
+    <g transform="translate(270,20)">
+      <text class="big" x="60" y="-4" text-anchor="middle" style="font-size:13px">对手只能去「中央」盘</text>
+      <rect x="-6" y="2" width="132" height="132" rx="10" fill="#f4f9ff" stroke="#d6e3f3"/>
+      <g fill="#fff" stroke="#c9d9ee" stroke-width="2">
+        <rect x="0" y="8" width="36" height="36" rx="4"/>
+        <rect x="42" y="8" width="36" height="36" rx="4"/>
+        <rect x="84" y="8" width="36" height="36" rx="4"/>
+        <rect x="0" y="50" width="36" height="36" rx="4"/>
+        <rect x="84" y="50" width="36" height="36" rx="4"/>
+        <rect x="0" y="92" width="36" height="36" rx="4"/>
+        <rect x="42" y="92" width="36" height="36" rx="4"/>
+        <rect x="84" y="92" width="36" height="36" rx="4"/>
+      </g>
+      <rect x="42" y="50" width="36" height="36" rx="4" fill="#fff6e6" stroke="#d98a1f" stroke-width="3"/>
+      <text x="108" y="150" class="lbl" text-anchor="end">金框 = 对手的强制落点</text>
+    </g>
+  </svg>
+  <div class="cap">图 2 · 落点 → 目标棋盘映射（这就是"超级"之处）</div>
+</div>
+
+<h2>三、三阶段氛围系统</h2>
+<div class="stages">
+  <div class="stage stage1"><b>🌤 平静期</b><small>开局 <b>0～5 格</b>：晴空背景、柔和面板。</small></div>
+  <div class="stage stage2"><b>🌇 升温期</b><small>落子 <b>6～11 格</b>：背景转黄昏暖色，气氛开始紧张。</small></div>
+  <div class="stage stage3"><b>⚡ 白热化</b><small>落子 <b>≥12 格</b>：乌云暴风、红光脉冲边框、比分变红、右上角出现「战况白热化」标签，切换瞬间轻微震动。</small></div>
+</div>
+<div class="card tip"><b>为什么按格子数？</b> 落子越多、局面越接近终局 —— 第 6 格开始升温，<b>第 12 格</b>起进入白热化，此时棋盘已铺开大半，正是分胜负的时刻。</div>
+
+<h2>四、房间 · 座位 · 踢人</h2>
+<div class="card" style="padding:0; overflow:hidden">
+<table>
+  <tr><th style="width:130px">功能</th><th>说明</th></tr>
+  <tr><td>房间码</td><td>6 位（不含易混淆的 I / O / 0 / 1），链接与二维码在 <b>👥 房间</b> 面板</td></tr>
+  <tr><td>昵称</td><td>进房自动分配随机名（可改成 ≤8 字），<b>回合、上一手、结果条、成员列表全部显示名字</b></td></tr>
+  <tr><td>上下台</td><td>点座位上台、点 <b>⬇ 下台观战</b> 离开；<b>比赛中随时换人接替</b>，局面、比分、落点完全不变</td></tr>
+  <tr><td>断线</td><td>自动重连、刷新不掉座；座位保留 <b>90 秒</b>，超时释放并广播「✕ 座位已空出」</td></tr>
+  <tr><td>房主 👑</td><td>创建者即房主，可 <b>[踢出]</b>（需二次确认）和 <b>[设房主]</b>；离线回来自动收回 👑</td></tr>
+  <tr><td>被踢</td><td>被踢者退回大厅，<b>同房间重连/再加入都会被拦截</b></td></tr>
+  <tr><td>观战</td><td>座位满了自动观战，实时看棋；有空位时状态栏提示「⏳ 等待玩家上台」</td></tr>
+</table>
+</div>
+
+<h2>五、界面提示对照</h2>
+<div class="card" style="padding:0; overflow:hidden">
+<table>
+  <tr><th style="width:180px">你看到的</th><th>含义</th></tr>
+  <tr><td>金色边框闪烁的小棋盘</td><td>当前<b>可以落子</b>的区域（被约束时其它棋盘保持完整显示）</td></tr>
+  <tr><td>格子上的<b>金色圆点 + 光圈</b></td><td><b>上一手</b>落在这里</td></tr>
+  <tr><td>状态栏第一行</td><td>该谁下 → <code>轮到 小火箭 ◯</code></td></tr>
+  <tr><td>状态栏第二行</td><td>上一手位置 → <code>上一手：小火箭 ◯ 中央盘 · 左上格</code></td></tr>
+  <tr><td>橙色「⏳ 等待玩家上台」</td><td>有座位空缺，点空位即可接替</td></tr>
+  <tr><td>左上 <span class="tag">✨/💤</span></td><td><b>一键特效开关</b>：关闭所有动画（棋子抖动/闪烁/旋转、金框脉冲、屏震）、雨雾闪电与 BGM，并记住选择</td></tr>
+  <tr><td>左上 <span class="tag">🔊/🔇</span></td><td><b>BGM 开关</b>（先点击一次页面解锁音频）。白热化只有视觉雨与闪电，<b>无雨声音效</b></td></tr>
+  <tr><td>左上 <span class="tag">🎵 滑块</span></td><td><b>BGM 音量条 0–150%</b>（默认100%），实时生效、选择会被记住</td></tr>
+  <tr><td>右上 <span class="tag">CHEAT ON</span></td><td>服务器带 <code>--cheat</code> 启动（测试用）</td></tr>
+</table>
+</div>
+
+<h2>六、连不上？按顺序查</h2>
+<details open><summary>① 防火墙</summary><p>控制台第一次启动时 Windows 会弹窗 → 必须勾选<b>专用网络</b>并点<b>允许访问</b>。错过了就去：安全中心 → 防火墙 → 允许应用通过防火墙，勾选该游戏程序。</p></details>
+<details><summary>② 不同网络</summary><p>手机和电脑必须在<b>同一个 WiFi</b>（连"访客网络"也不行，访客网络通常与主网络隔离）。</p></details>
+<details><summary>③ 路由器 AP 隔离</summary><p>路由器后台找到「AP 隔离 / 无线隔离 / 访客网络隔离」并<b>关闭</b>。不关的话两台设备互相 ping 不通。</p></details>
+<details><summary>④ 自检页面</summary><p>电脑浏览器打开 <code>http://127.0.0.1:8321/check</code>，手机打开同一台电脑的 <code>http://192.168.x.x:8321/check</code>。<b>手机能打开 = 网络通</b>，再不行才查游戏本身。</p></details>
+<details><summary>⑤ 端口被占用</summary><p>提示端口失败 = 已经有一个实例在跑。关掉旧的，或换端口：<code>超级井字棋.exe --port 9000</code>（WebSocket 自动用 9001）。</p></details>
+
+<h2>七、命令行参数</h2>
+<div class="card">
+  <code>超级井字棋.exe [--port 8321] [--host 0.0.0.0] [--no-open] [--verbose] [--seat-grace 90] [--cheat]</code>
+  <p style="margin-bottom:0"><span class="tag">--cheat 作弊/测试模式，说明见《开发者手册.md》</span>
+     <span class="tag">--seat-grace 断线座位保留秒数</span>
+     <span class="tag">--no-open 不自动开浏览器</span></p>
+</div>
+
+<h2>八、离线单机</h2>
+<div class="card">双击 <code>index.html</code> 即可进入<b>本地双人</b>模式（同一台电脑轮流下），无需服务器。首次打开会自动弹出<b>图文新手教程</b>（含互动演示），随时点 <b>📘 教程</b> 重看。</div>
+
+<h2>九、快捷键一览</h2>
+<div class="card">
+  <p style="margin:6px 0">
+    <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">D</span> &nbsp;呼出/关闭作弊面板（需 <code>--cheat</code>）<br>
+    <span class="kbd">←</span> / <span class="kbd">→</span> &nbsp;教程上一步 / 下一步<br>
+    <span class="kbd">Esc</span> &nbsp;关闭当前弹窗<br>
+    连点标题 5 次 &nbsp;备用作弊入口
+  </p>
+</div>
+
+<h2>十、素材自定义（免重新打包）</h2>
+<div class="card">把文件放进 <b>exe 同级的 <code>assets\</code> 文件夹</b>（没有就新建），<b>保存即生效</b>：
+<table style="margin-top:10px">
+  <tr><th>文件名（按优先级）</th><th>作用</th></tr>
+  <tr><td><code>bg.jpg</code> / <code>bg.png</code></td><td>平时的晴空背景，可换成你自己的图</td></tr>
+  <tr><td><code>bg-storm.mp4 → webm → gif → jpg → png</code></td><td>白热化暴风底（依次探测，找到即用）</td></tr>
+  <tr><td><code>bgm-calm.mp3</code></td><td>🌤 平静期 BGM（0–5 格）</td></tr>
+  <tr><td><code>bgm-warm.mp3</code></td><td>🌇 升温期 BGM（6–11 格）</td></tr>
+  <tr><td><code>bgm-hot.mp3</code></td><td>⛈ 白热化 BGM（≥12 格）</td></tr>
+  <tr><td><code>bgm-win.mp3</code></td><td>🏆 胜利结算 BGM（获胜时淡入；平局不切）</td></tr>
+</table>
+<p style="margin-bottom:0">音频支持 <code>mp3 / ogg / m4a / wav / flac / aac</code>，缺文件静默跳过；阶段切换自动<b>交叉淡入淡出</b>，受左上 🔊 与 ✨特效 开关控制。</p>
+</div>
+
+<footer>
+  超级井字棋 Ultimate Tic-Tac-Toe · 局域网联机版<br>
+  测试覆盖：规则 4000 局回归 · 服务器集成 · 管理功能 · 作弊模式 · 界面 208 项
+</footer>
+
+</div>
+</body>
+</html>

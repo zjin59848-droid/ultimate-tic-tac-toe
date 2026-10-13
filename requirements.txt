@@ -1,0 +1,4 @@
+websockets>=12
+qrcode>=7
+# 构建 exe 时需要：
+pyinstaller>=6
